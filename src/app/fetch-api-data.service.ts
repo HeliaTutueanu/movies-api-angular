@@ -135,7 +135,6 @@ export class FetchApiDataService {
         Authorization: 'Bearer ' + token,
       })}).pipe(
       map(this.extractResponseData),
-      //map((data) => data.FavoriteMovies),
       catchError(this.handleError)
     );
   }
@@ -150,7 +149,7 @@ export class FetchApiDataService {
     const token = localStorage.getItem('token');
     console.log('in fetch api service: ', movie);
     console.log('in fetch api service_id: ', movie._id);
-    return this.http.post(apiUrl + 'users/' + user.Username + '/movies/' + movie._id, null, {headers: new HttpHeaders(
+    return this.http.post(apiUrl + 'users/' + user.Username + '/favorites/' + movie._id, null, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
@@ -158,7 +157,7 @@ export class FetchApiDataService {
       catchError(this.handleError)
     );
   }
-
+  
   /**
    * Making the api call for the Edit User endpoint.
    * @param {any} userDetails - User details for updating user information.
@@ -167,7 +166,7 @@ export class FetchApiDataService {
   editUser(userDetails: any): Observable<any> {
     console.log(userDetails);
     const token = localStorage.getItem('token');
-    return this.http.put(apiUrl + 'users/' + userDetails.Username, userDetails, {headers: new HttpHeaders(
+    return this.http.put(apiUrl + 'users/update/' + userDetails.Username, userDetails, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
@@ -183,7 +182,7 @@ export class FetchApiDataService {
   deleteUser(): Observable<any> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
-    return this.http.delete(apiUrl + 'users/' + user.Username, {headers: new HttpHeaders(
+    return this.http.delete(apiUrl + 'users/remove/' + user.Username, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
@@ -201,7 +200,7 @@ export class FetchApiDataService {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
     console.log('in fetch api service: ', movie._id);
-    return this.http.delete(apiUrl + 'users/' + user.Username + '/movies/' + movie._id, {headers: new HttpHeaders(
+    return this.http.delete(apiUrl + 'users/' + user.Username + '/favorites/' + movie._id, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
