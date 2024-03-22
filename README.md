@@ -1,6 +1,10 @@
-# MoviesApiAngularClient
+# Movies-Api Angular Client
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
+
+## Information
+
+This project is the Angular Client side of the movies api project. For more information, visit: https://github.com/HeliaTutueanu/movies-api
 
 ## Development server
 
